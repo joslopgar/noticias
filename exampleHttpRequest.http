@@ -1,0 +1,2 @@
+GET https://newsapi.org/v2/everything?q=tesla&from=2023-02-08&sortBy=publishedAt&apiKey=470a9bb026ce40b599b0f07cb728bbb3
+Accept: application/json
