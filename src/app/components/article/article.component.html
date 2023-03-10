@@ -1,13 +1,13 @@
 <ion-card *ngIf="article">
   <ion-card-header>
     <ion-card-subtitle class="ion-margin">
-      <ion-row (click)="openArticle()">
-        <ion-col class="ion-margin">
+      <ion-row >
+        <ion-col class="ion-margin" (click)="openArticle()">
           <span class="text-primary">{{ index + 1 }}. </span>
           <span class="article-source-name">{{article.source.name}}</span>
         </ion-col>
         <ion-col class="ellipsis-container">
-          <ion-button class="" fill="clear" (click)="onClick()" *ngIf="article.url">
+          <ion-button fill="clear" (click)="onOpenMenu()" *ngIf="article.url">
             <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
           </ion-button>
           <!--<ion-button *ngIf="article.url"
