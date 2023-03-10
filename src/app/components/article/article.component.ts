@@ -1,7 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {Article} from "../../interfaces";
 import {Browser} from "@capacitor/browser";
+import {Share} from "@capacitor/share";
 import {ActionSheetController} from "@ionic/angular";
+import {StorageService} from "../../services/storage.service";
 
 @Component({
   selector: 'app-article',
@@ -13,7 +15,10 @@ export class ArticleComponent {
   @Input() article: Article = {} as Article;
   @Input() index: number = 0;
 
-  constructor(private actionSheetController: ActionSheetController) {
+  constructor(
+    private actionSheetController: ActionSheetController,
+    private storageService: StorageService,
+    ) {
   }
 
   openArticle = async () => {
@@ -50,11 +55,16 @@ export class ArticleComponent {
     await actionSheet.present();
   }
 
-  private onShareArticle() {
-
+  private async onShareArticle() {
+    await Share.share({
+      title: this.article.title,
+      text: '¡Mira qué artículo he encontrado!',
+      url: this.article.url,
+      dialogTitle: 'Compartir'
+    });
   }
 
-  private onToggleFavorite() {
-
+  private async onToggleFavorite() {
+    await this.storageService.saveRemoveArticle(this.article);
   }
 }
