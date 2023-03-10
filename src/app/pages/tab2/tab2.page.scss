@@ -1,0 +1,7 @@
+
+
+//Hide the scrollbar in the ion-segment element
+::-webkit-scrollbar, *::-webkit-scrollbar {
+  display: none !important;
+  overflow: hidden;
+}

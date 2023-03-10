@@ -1,0 +1,22 @@
+<ion-grid *ngIf="articles" [fixed]="true">
+  <ion-row>
+    <ion-col
+      size="12"
+      size-md="6"
+      *ngFor="let article of articles; let i = index">
+
+      <app-article
+
+        [article]="article"
+        [index]="i"
+      ></app-article>
+
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<div *ngIf="!articles">
+  <ion-spinner
+    color="primary"
+  ></ion-spinner>
+</div>
